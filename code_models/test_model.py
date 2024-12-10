@@ -2,7 +2,8 @@ import tensorflow as tf
 import numpy as np
 from models import label_encoder_kategori, label_encoder_rekomendasi, X
 
-new_data = np.array([[4, 26, 3]])  # serving_per_package, gula, total_gula
+new_data = np.array([[4, 26, 3]])  # serving_per_package, gula, total_gula 3 variabel
+# new_data = np.array([[4, 26, 3, 43, 60]])  # serving_per_package, gula, total_gula 5 variabel
 
 new_data = new_data / np.max(X, axis=0)
 
