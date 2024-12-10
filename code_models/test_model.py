@@ -2,11 +2,9 @@ import tensorflow as tf
 import numpy as np
 from models import label_encoder_kategori, label_encoder_rekomendasi, X
 
-# Contoh data baru
 new_data = np.array([[4, 26, 3]])  # serving_per_package, gula, total_gula
 
-# Normalisasi fitur numerik
-new_data = new_data / np.max(X, axis=0)  # Gunakan skala yang sama dengan data pelatihan
+new_data = new_data / np.max(X, axis=0)
 
 loaded_model = tf.keras.models.load_model("./model/model_baru/model_5Variabel_fix.h5")
 print("Model berhasil dimuat kembali.")

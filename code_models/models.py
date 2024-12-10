@@ -44,6 +44,7 @@ X_train, X_test, y_train_kategori, y_test_kategori, y_train_rekomendasi, y_test_
 # Define models 
 def modelCnn():
     input_layer = Input(shape=(3,))
+    # input_layer = Input(shape=(5,))
 
     # Shared layers
     shared = Dense(64, activation='relu')(input_layer)
