@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.layers import Dense
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from tensorflow.keras import Model, Input
+import matplotlib.pyplot as plt
 
 # Membaca file CSV
 df = pd.read_csv('./dataset/advanced_nutrition_data.csv')
@@ -15,6 +16,7 @@ df.rename(columns={
     'Total Gula (g)': 'total_gula',
     'Umur': 'umur',
     'Berat Badan (kg)': 'berat_badan',
+    'Riwayat Diabetes' : 'riwayat_diabetes',
     'Kategori Gula': 'kategori_gula',
     'Rekomendasi': 'rekomendasi'
 }, inplace=True)
@@ -22,13 +24,19 @@ df.rename(columns={
 # Encode categorical columns
 label_encoder_kategori = LabelEncoder()
 label_encoder_rekomendasi = LabelEncoder()
+label_encoder_diabetes = LabelEncoder()  # New LabelEncoder for diabetes
 
 df['kategori_gula'] = label_encoder_kategori.fit_transform(df['kategori_gula'])
 df['rekomendasi'] = label_encoder_rekomendasi.fit_transform(df['rekomendasi'])
+df['diabetes'] = label_encoder_diabetes.fit_transform(df['diabetes'])
+
+# convert to appropriate data types (e.g., float for numeric columns)
+df['gula'] = df['gula'].astype(float)
+df['total_gula'] = df['total_gula'].astype(float)
 
 # Features and targets
-X = df[['serving_per_package', 'gula', 'total_gula']].values
-# X = df[['serving_per_package', 'gula', 'total_gula', 'umur', 'berat_badan']].values
+# X = df[['serving_per_package', 'gula', 'total_gula']].values
+X = df[["serving_per_package", "gula", "total_gula", "age", "bb", "diabetes"]].values
 y_kategori = df['kategori_gula'].values
 y_rekomendasi = df['rekomendasi'].values
 
@@ -43,7 +51,7 @@ X_train, X_test, y_train_kategori, y_test_kategori, y_train_rekomendasi, y_test_
 
 # Define models 
 def modelCnn():
-    input_layer = Input(shape=(3,))
+    input_layer = Input(shape=(6,))
     # input_layer = Input(shape=(5,))
 
     # Shared layers
@@ -94,7 +102,40 @@ if __name__ == "__main__":
 
     print(f"loss = {loss},\n acc_kategori = {acc_kategori},\n acc_rekomendasi = {acc_rekomendasi}")
 
+    # Plot Loss
+    plt.figure(figsize=(12, 5))
+
+    # Loss for kategori_gula
+    plt.subplot(1, 2, 1)
+    plt.plot(history.history['kategori_gula_loss'], label='Train Loss (kategori_gula)')
+    plt.plot(history.history['val_kategori_gula_loss'], label='Val Loss (kategori_gula)')
+    # Loss for rekomendasi
+    plt.plot(history.history['rekomendasi_loss'], label='Train Loss (rekomendasi)')
+    plt.plot(history.history['val_rekomendasi_loss'], label='Val Loss (rekomendasi)')
+    plt.title('Loss During Training')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend()
+    plt.grid()
+
+    # Plot Accuracy
+    # Accuracy for kategori_gula
+    plt.subplot(1, 2, 2)
+    plt.plot(history.history['kategori_gula_accuracy'], label='Train Accuracy (kategori_gula)')
+    plt.plot(history.history['val_kategori_gula_accuracy'], label='Val Accuracy (kategori_gula)')
+    # Accuracy for rekomendasi
+    plt.plot(history.history['rekomendasi_accuracy'], label='Train Accuracy (rekomendasi)')
+    plt.plot(history.history['val_rekomendasi_accuracy'], label='Val Accuracy (rekomendasi)')
+    plt.title('Accuracy During Training')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.legend()
+    plt.grid()
+
+    plt.tight_layout()
+    plt.show()
+
     # Save the model
-    model.save("./model/model_baru/model_3Variabel_fix.h5")
-    print("Model berhasil disimpan sebagai 'model_capstone.h5'")
+    model.save("./model/model_6Variabel_fix.h5")
+    print("Model berhasil disimpan")
 
