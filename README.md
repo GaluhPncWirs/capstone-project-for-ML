@@ -6,7 +6,7 @@
 
 ![](images/Nutrigood_ml.png)
 
-Proyek ini adalah generator dataset nutrisi canggih untuk keperluan analisis data kesehatan, dengan informasi seperti total gula, kategori gula, dan rekomendasi konsumsi berdasarkan pedoman kesehatan.  
+This prject is OCR-based system that extracts and analyzes nutritional information from food labels, providing quick and accurate insights to support healthier dietary choices.
 
 ## Fitur  
 - **Menghasilkan dataset sintetis** dengan variasi pada atribut seperti gula, total gula, usia, berat badan, dan lainnya.  
