@@ -1,5 +1,5 @@
 
-# Advanced Nutrition Dataset Generator  
+# Nutrigoood: OCR-Based Nutritional Prediction Analysis System
 
 [![GitHub](https://img.shields.io/github/forks/GaluhPncWirs/capstone-project-for-ML?style=social)](https://github.com/GaluhPncWirs/capstone-project-for-ML/fork)  
 [![GitHub stars](https://img.shields.io/github/stars/GaluhPncWirs/capstone-project-for-ML?style=social)](https://github.com/GaluhPncWirs/capstone-project-for-ML/stargazers)  
@@ -50,6 +50,11 @@ Serving Per Package,Gula (g),Total Gula (g),Umur,Berat Badan (kg),Riwayat Diabet
 5,10.5,52.5,45,70.8,Tidak Diabetes,Tinggi Gula,Lebih Baik Tidak Dikonsumsi
 3,4.2,12.6,25,60.1,Ada Diabetes,Rendah Gula,Aman Dikonsumsi
 ```
+## Team  
+Developed by **ML TEAM | C242-PS345**
+- (ML) M262B4KY1585 – Galuh Panca wirasa – Universitas Muhammadiyah Prof Dr Hamka
+- (ML) M284B4KX3378 – Nina Meylinda Syukriyah – Universitas Negeri Surabaya 
+- (ML) M315B4KX3947 – Rizqi Hairunnisa – Universitas Sriwijaya
 
 ## Lisensi  
 Proyek ini dirilis di bawah lisensi MIT.  
