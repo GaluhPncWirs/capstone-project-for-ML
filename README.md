@@ -4,6 +4,8 @@
 [![GitHub](https://img.shields.io/github/forks/GaluhPncWirs/capstone-project-for-ML?style=social)](https://github.com/GaluhPncWirs/capstone-project-for-ML/fork)  
 [![GitHub stars](https://img.shields.io/github/stars/GaluhPncWirs/capstone-project-for-ML?style=social)](https://github.com/GaluhPncWirs/capstone-project-for-ML/stargazers)  
 
+![](images/Nutrigood_ml.png)
+
 Proyek ini adalah generator dataset nutrisi canggih untuk keperluan analisis data kesehatan, dengan informasi seperti total gula, kategori gula, dan rekomendasi konsumsi berdasarkan pedoman kesehatan.  
 
 ## Fitur  
